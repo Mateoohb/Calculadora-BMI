@@ -1,52 +1,30 @@
-# Prerequisites
-*.d
+#include <stdio.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+int main(){
+	float peso, altura, bmi;
 
-# Linker output
-*.ilk
-*.map
-*.exp
+	//solicitar datos al usuario.
+	printf("Ingrese su peso en kg: ");
+	scanf("%f", &peso);
 
-# Precompiled Headers
-*.gch
-*.pch
+	printf("Ingrese su altura en metros: ");
+	scanf("%f", &altura);
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+	if(altura <= 0 || peso <= 0){
+		printf("ERROR, los datos ingresados deben ser mayores a cero. \n");
+		return 1;
+	}
+	//calculo del BMI
+	bmi = peso / (altura * altura);
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+	//mostrar resultado.
+	printf("\n Su indice de masa corporal es de: %.2f", bmi);
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+	// Mostrar tabla de referencia
+    printf("\n%-10s | %s\n", "Índice", "Condición");
+    printf("-----------------------------\n");
+    printf("<18.5      | Bajo peso\n");
+    printf("18.5 - 24.9| Normal\n");
+    printf("25.0 - 29.9| Sobrepeso\n");
+    printf(">=30       | Obesidad\n");
+}
